@@ -1,14 +1,30 @@
 {
     "env": {
         "browser": true,
-        "es2021": true,
         "node": true,
+        "es2021": true,
         "jest": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "alias": {
+                "map": [
+                    [
+                        "@",
+                        "./src"
+                    ]
+                ]
+            }
+        }
     },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -19,15 +35,19 @@
     },
     "plugins": [
         "react",
-        "react-hooks"
+        "react-hooks",
+        "prettier"
     ],
     "rules": {
+        "prettier/prettier": "error",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
         "no-unused-vars": "warn",
         "react/prop-types": 0,
         "no-underscore-dangle": 0,
         "no-useless-escape": 0,
+        "no-console": "warn",
+        "no-alert": "error",
         "arrow-body-style": [
             "error",
             "as-needed"
@@ -44,25 +64,13 @@
         "react-hooks/exhaustive-deps": "off",
         "no-nested-ternary": "warn",
         "react/display-name": 0,
-        "react/jsx-filename-extension": [
-            1,
-            {
-                "extensions": [
-                    ".js",
-                    ".jsx"
-                ]
-            }
-        ],
-        "react/function-component-definition": [
-            1,
-            {
-                "namedComponents": "arrow-function"
-            }
-        ],
-        "no-var": "error",
-        "quotes": [
+        "padding-line-between-statements": [
             "error",
-            "single"
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "return"
+            }
         ]
     }
 }
