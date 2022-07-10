@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { TextField } from '@mui/material';
 
 const Input = ({ label, value, onChange }) => (
-  <TextField label={label} variant="outlined" value={value} onChange={onChange} />
+  <TextField label={label} variant="outlined" size="small" value={value} onChange={onChange} />
 );
 
 Input.propTypes = {

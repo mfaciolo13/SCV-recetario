@@ -1,15 +1,14 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Detail, Home, Ratings } from 'pages';
 
 const App = () => (
-  <div>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="detail" element={<Detail />} />
-      <Route path="ratings" element={<Ratings />} />
-    </Routes>
-  </div>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="detail" element={<Detail />} />
+    <Route path="ratings" element={<Ratings />} />
+    <Route path="*" element={<Navigate to="/" replace />} />
+  </Routes>
 );
 
 export default App;
