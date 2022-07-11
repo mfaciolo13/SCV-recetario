@@ -5,18 +5,18 @@ const { recetasService } = require('../services/recetas.service');
 const recetasRouter = express.Router();
 
 recetasRouter.get('/', async (req, res) => {
-  const recetas = await recetasService.getRecetas(req.params);
-  res.json({ total: recetas.length, recetas });
+  const results = await recetasService.getRecetas(req.params);
+  res.json({ total: results.length, results });
 });
 
 recetasRouter.get('/:id', async (req, res) => {
-  const receta = await recetasService.getRecetaById(req.params.id);
-  res.json({ receta });
+  const results = await recetasService.getRecetaById(req.params.id);
+  res.json({ results });
 });
 
 recetasRouter.patch('/:id', async (req, res) => {
-  const receta = await recetasService.updateReceta(req.params.id, req.body);
-  res.json({ receta });
+  const results = await recetasService.updateReceta(req.params.id, req.body);
+  res.json({ results });
 });
 
 exports.recetasRouter = recetasRouter;
