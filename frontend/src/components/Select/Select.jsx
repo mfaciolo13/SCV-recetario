@@ -31,11 +31,11 @@ Select.propTypes = {
   label: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       label: PropTypes.string.isRequired,
     })
   ).isRequired,
-  selected: PropTypes.string.isRequired,
+  selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
 };
 

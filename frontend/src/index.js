@@ -7,13 +7,18 @@ import { StyledEngineProvider } from '@mui/material';
 import App from './App';
 
 import './index.css';
+import FeedbackToastProvider from 'contexts/FeedbackToastContext';
+import Toast from 'components/Toast/Toast';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <StyledEngineProvider injectFirst>
-        <App />
+        <FeedbackToastProvider>
+          <App />
+          <Toast />
+        </FeedbackToastProvider>
       </StyledEngineProvider>
     </BrowserRouter>
   </React.StrictMode>

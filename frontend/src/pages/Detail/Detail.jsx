@@ -1,17 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tab, Tabs } from '@mui/material';
+import { useParams } from 'react-router-dom';
 
+import RecipeApi from 'api/Recipe.api';
 import { RAITING_OPTIONS } from './Detail.utils';
+import { useFeedbackToast } from 'contexts/FeedbackToastContext';
 
 import { TabPanel, Select, Button } from 'components';
+import useLocalStorage from 'hooks/useLocalStorage';
 
 const Detail = () => {
+  const { handleOpenToast } = useFeedbackToast();
+  const { storageData, getItem, setItem } = useLocalStorage();
+
   const [currentTab, setCurrentTab] = useState(0);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState('');
+  const { id } = useParams();
 
   const handleChange = (_, newValue) => {
     setCurrentTab(newValue);
   };
+
+  const saveRating = async () => {
+    try {
+      const data = {
+        rating: selected,
+      };
+
+      await RecipeApi.updateRecipe(id, data);
+      setItem({ [id]: true });
+
+      handleOpenToast('success', '¡Receta actualizada!');
+    } catch (error) {
+      handleOpenToast('error', error.message);
+    }
+  };
+
+  useEffect(() => {
+    getItem();
+  }, []);
 
   return (
     <div className="flex items-center justify-center">
@@ -28,7 +55,7 @@ const Detail = () => {
         </TabPanel>
         <div className="flex mt-4 gap-4">
           <Select selected={selected} onChange={setSelected} options={RAITING_OPTIONS} />
-          <Button label="Guardar" />
+          <Button label="Guardar" onClick={saveRating} disabled={storageData[id] ?? false} />
         </div>
       </div>
     </div>

@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import { Button as MUIButton } from '@mui/material';
 
-const Button = ({ label, onChange }) => (
-  <MUIButton variant="outlined" onChange={onChange}>
+const Button = ({ label, onClick }) => (
+  <MUIButton variant="outlined" onClick={onClick}>
     {label}
   </MUIButton>
 );
 
 Button.propTypes = {
   label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
-  onChange: () => {},
+  onClick: () => {},
 };
 
 export default Button;

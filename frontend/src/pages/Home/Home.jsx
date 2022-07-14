@@ -17,6 +17,7 @@ const Home = () => {
 
         setRecipesData(results);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
       }
     };
@@ -26,14 +27,13 @@ const Home = () => {
 
   return (
     <div className="flex items-center justify-center flex-col">
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-4 mb-4">
         <div className="flex gap-4">
           <Input label="Recetas" />
           <Button label="Buscar" />
         </div>
         <Link to="/ratings">Ver valoraciones</Link>
       </div>
-      <Table columns={COLUMNS} rows={recipesData} />
     </div>
   );
 };
