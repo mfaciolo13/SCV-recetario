@@ -16,7 +16,7 @@ const Ratings = () => {
   };
 
   useEffect(() => {
-    getRecipes('desc');
+    getRecipes();
   }, []);
 
   return (
@@ -32,7 +32,7 @@ const Ratings = () => {
         <TabPanel value={currentTab} index={1}>
           <Table rows={recipes} isLoading={true} />
         </TabPanel>
-        <Link to="/" className="pt-4">
+        <Link to="/" className="pt-4 w-[100px]">
           Volver al inicio
         </Link>
       </div>

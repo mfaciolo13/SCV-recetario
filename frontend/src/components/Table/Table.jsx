@@ -30,7 +30,7 @@ BasicTable.propTypes = {
   rows: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      averageRating: PropTypes.number.isRequired,
+      averageRating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ).isRequired,
 };

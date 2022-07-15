@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Button as MUIButton } from '@mui/material';
 
-const Button = ({ label, onClick }) => (
-  <MUIButton variant="outlined" onClick={onClick}>
+const Button = ({ label, disabled, onClick }) => (
+  <MUIButton variant="outlined" disabled={disabled} onClick={onClick}>
     {label}
   </MUIButton>
 );
