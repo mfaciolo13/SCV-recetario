@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import RecipeApi from 'api/Recipe.api';
 import { RAITING_OPTIONS } from './Detail.utils';
 import { useFeedbackToast } from 'contexts/FeedbackToastContext';
+import { useLocalStorage } from 'hooks';
 
 import { TabPanel, Select, Button } from 'components';
-import useLocalStorage from 'hooks/useLocalStorage';
 
 const Detail = () => {
   const { handleOpenToast } = useFeedbackToast();

@@ -1,9 +1,8 @@
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import useLocalStorage from 'hooks/useLocalStorage';
-
 import { Detail, Home, Ratings } from 'pages';
-import { useEffect } from 'react';
+import { useLocalStorage } from 'hooks';
 
 const App = () => {
   const { setItem } = useLocalStorage();
