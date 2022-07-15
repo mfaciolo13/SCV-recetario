@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { Link } from 'react-router-dom';
+
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 const BasicTable = ({ rows }) => (
   <TableContainer component={Paper}>
@@ -13,9 +14,9 @@ const BasicTable = ({ rows }) => (
       </TableHead>
       <TableBody>
         {rows.map((row) => (
-          <TableRow key={row.name}>
+          <TableRow key={row.id}>
             <TableCell component="th" scope="row">
-              <Link to={`detail/${row.id}`}>{row.title}</Link>
+              <Link to={`/detail/${row.id}`}>{row.title}</Link>
             </TableCell>
             <TableCell>{row.averageRating ?? '-'}</TableCell>
           </TableRow>
@@ -29,7 +30,7 @@ BasicTable.propTypes = {
   rows: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      averageRating: PropTypes.string.isRequired,
+      averageRating: PropTypes.number.isRequired,
     })
   ).isRequired,
 };

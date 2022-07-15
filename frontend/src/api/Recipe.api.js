@@ -1,8 +1,8 @@
 import axios from './api';
 
 const RecipeApi = {
-  async getRecipes() {
-    const response = await axios.get(`/recetas`);
+  async getRecipes(orderBy) {
+    const response = await axios.get(`/recetas`, { params: { orderBy } });
 
     return response.data;
   },

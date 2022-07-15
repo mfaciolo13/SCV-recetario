@@ -5,7 +5,7 @@ const { recetasService } = require('../services/recetas.service');
 const recetasRouter = express.Router();
 
 recetasRouter.get('/', async (req, res) => {
-  const results = await recetasService.getRecetas(req.params);
+  const results = await recetasService.getRecetas(req.query);
   res.json({ total: results.length, results });
 });
 

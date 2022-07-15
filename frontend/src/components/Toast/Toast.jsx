@@ -27,7 +27,7 @@ Toast.defaultProps = {
   open: false,
   duration: 1500,
   variant: 'success',
-  message: PropTypes.string,
+  message: '',
   handleClose: () => {},
 };
 

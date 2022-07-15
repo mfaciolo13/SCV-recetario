@@ -1,30 +1,19 @@
+const orderBy = require('lodash/orderBy');
 const mean = require('lodash/mean');
-
-const recetasMock = [
-  {
-    id: '1',
-    title: 'Bizcochuelo',
-    ingredients: ['Harina', 'Huevos', 'Ingrediente 3'],
-    rating: [],
-    steps: [],
-    averageRating: null,
-  },
-  {
-    id: '2',
-    title: 'Receta 2',
-    ingredients: ['Ingrediente 1', 'Ingrediente 2', 'Ingrediente 3'],
-    rating: [],
-    averageRating: null,
-  },
-];
+const { recetasMock } = require('../mock/recetas.mock');
 
 exports.recetasService = {
   async getRecetas(options) {
-    if (options.sortBy) {
-      return recetasMock.sort();
+    if (options.orderBy) {
+      const data = orderBy(recetasMock, 'averageRating', options.orderBy);
+
+      return data;
     }
     if (options.search) {
-      return recetasMock.filter();
+      return recetasMock.filter(
+        (receta) =>
+          receta.title.includes(options.search) || receta.ingredients.map((receta) => receta.includes(options.search))
+      );
     }
 
     return recetasMock;
